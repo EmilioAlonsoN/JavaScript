@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Operators</title>
+<link href="style.css" rel="stylesheet">
+<script>
+	var rockStars = [];
+	rockStars[0] = prompt("Who is your favorite rock star?", "");
+	/*
+	Ask the user how many of this rockstar's cds she owns and store
+	the result in a variable.
+	*/
+	var numberCds = window.prompt("How many Cd's of this rockStar do you owns?", "")
+	rockStars[1] = prompt("And your next favorite rock star?", "");
+	/*
+	Ask the user how many of this rockstar's cds she owns and store
+	the result in a variable.
+	*/
+	var numberCds1 = window.prompt("How many Cd's of this rockStar do you owns?", "")
+	var numsSubtracted = numberCds - numberCds1;
+</script>
+</head>
+<body>
+<!--
+	Let the user know how many more of her favorite rockstar's albums
+	she has than of her second favorite rockstar's cds.
+-->
+<script>
+	document.write("You own: " + numsSubtracted + " more cds from " + rockStars[0] + " than " + rockStars[1] + "<br>");
+</script>
+</body>
+</html>

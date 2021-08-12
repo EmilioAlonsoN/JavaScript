@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Element Nodes</title>
+<link href="style.css" rel="stylesheet">
+<script>
+	function SetFontSize() {
+		var elements = document.querySelector("ul");
+		var firstElement = elements.firstChild;
+		firstElement.style.fontSize = "10px";
+		var nextElement = firstElement.nextSibling;
+		nextElement.style.fontSize = "12px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "14px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "16px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "18px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "20px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "22px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "24px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "26px";
+		nextElement = nextElement.nextSibling;
+		nextElement.style.fontSize = "28px";
+	}
+
+	function SetSize() {
+		var elements = document.querySelector("ul");
+		var firstElement = elements.firstChild;
+		if(firstElement !== null) {
+			firstElement.style.fontSize = "10px";
+			var nextElement = firstElement.nextSibling;
+			nextElement.style.fontSize = "12px";
+			var pixels = 12;
+			while(nextElement = nextElement.nextSibling) {
+				pixels += 2;
+				nextElement.style.fontSize = pixels + "px";
+				console.log(nextElement);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<button onclick="SetSize()", ondblclick="SetFontSize()" type="button">Go</button>
+	<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li><li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li></ul>
+</body>
+</html>

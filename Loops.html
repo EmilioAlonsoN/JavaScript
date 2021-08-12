@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Loops</title>
+<script>
+function greetUser(){
+	let getGender;
+	let getSurname;
+	let gender = ["female", "male", "agender", "transgender female", "neither", "transgender male"];
+	let greeting;
+	let presidents = ["Obama", "Trump", "Clinton", "Bush", "Kennedy", "Washintong", "Roosevelt", "Limcoln"];
+
+	let repite = false;
+
+	do {
+		if (!repite ){
+			getGender = prompt("Choose yout Gender.", "") || "";
+			repite = true;
+		}
+		else {
+			getGender = prompt("You must enter one from current list: Female, Male, Agender, Transgender female, Transgender male, Neither.") || "";
+		}
+		
+	} while (typeof getGender != "string" || gender.indexOf(getGender.toLowerCase()) == -1)
+	repite = false;
+
+	do {
+		if (!repite) {
+			getSurname = prompt("What is your surname?", "");
+			repite = true;
+		}
+		else {
+			getSurname = prompt("Please enter a valid surname. No empty, no number and first capital letter.", "");
+		}
+	} while (getSurname == "" || ! isNaN(getSurname) || getSurname[0] === getSurname[0].toLowerCase()) 
+
+	switch (getGender.toLowerCase()) {
+		case "male" : case "transgender male" :
+			greeting ="Hello Mr. " + getSurname;
+			break;
+		case "female" : case "transgender female" :
+			greeting ="Hello Ms. " + getSurname;
+			break;
+		case "agender" : case "neither" :
+			greeting ="Hello " + getSurname;
+			break;
+		default :
+		greeting = "Hello stranger";
+	}
+
+	let isPresidential = false;
+
+	presidents.indexOf(getSurname.toLocaleLowerCase()) == -1
+
+	for (let isPres in presidents) if(presidents.hasOwnProperty(isPres)) {
+		if(getSurname.toLowerCase() == presidents[isPres].toLowerCase()) {
+			alert(greeting + " You have the same last name of a president!");
+			isPresidential = true;
+		}
+
+	}
+	if (!isPresidential) {
+		alert(greeting + " Your last name is not presidential.");
+	}
+	
+}
+</script>
+</head>
+<body onload="greetUser();">
+	<p>Nothing to show here.</p>
+</body>
+</html>

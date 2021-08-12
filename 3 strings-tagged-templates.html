@@ -1,0 +1,29 @@
+<html><head><title>03.Tagged templates</title></head>
+	<body>
+		<script>
+            var name = 'Roel';
+            var names =['Roel', 'Xander', 'Sebastiaan'];
+
+            // please complete the following code.
+            // tip for experts: use rest parameters and template strings
+
+            var transformTemplate = function(strings, ...values) {
+                // insert code
+                let greattings = (strings[0] == 'hello') ? "Goodbye " : strings[0];
+                return greattings + values; 
+            };
+
+            console.log(transformTemplate`hello ${name}`);
+            console.log(transformTemplate`hello ${names}`);
+            console.log(transformTemplate`Goodbye ${name}`);
+            console.log(transformTemplate`Goodbye ${names}`);
+
+            // controles
+            console.assert(transformTemplate`hello ${name}` === 'Goodbye Roel', 'input string, template transformed');
+            console.assert(transformTemplate`hello ${names}` === 'Goodbye Roel,Xander,Sebastiaan', 'input array, template transformed');
+
+		</script>
+
+	</body>
+
+</html>

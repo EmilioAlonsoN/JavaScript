@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration Form</title>
+<script src="FormValidation.js"></script>
+<script>
+
+function validate(e) {
+    let firstName = document.getElementById("FirstName").value;
+    let midleInitial = document.getElementById("MidInit").value;
+    let lastNAme = document.getElementById("LastName").value;
+    let city = document.getElementById("City").value;
+    let state = document.getElementById("State").value;
+    let country = document.getElementById("Country").value;
+    let zip = document.getElementById("Zip").value;
+    let email = document.getElementById("Email").value;
+    let username = document.getElementById("Username").value;
+    let password1 = document.getElementById("Password1").value;
+    let password2 = document.getElementById("Password2").value;
+    var errors = [];
+
+    if (!checkLength(firstName,1,100)) {
+      errors[errors.length] = "You must enter a firstname.";
+    }
+
+    if (!checkLength(midleInitial,1,1)) {
+      errors[errors.length] = "You must enter single letter.";
+    }
+
+    if (!checkLength(lastNAme,1,100)) {
+      errors[errors.length] = "You must enter a lastame.";
+    }
+
+    if (!checkLength(city,1,100)) {
+      errors[errors.length] = "You must enter a city.";
+    }
+
+    if (!checkLength(state,2,2)) {
+      errors[errors.length] = "You must enter the two letters of your state.";
+    }
+
+    if (!checkLength(country,1,100)) {
+      errors[errors.length] = "You must enter a country.";
+    }
+
+    if (!checkLength(zip,5,12)) {
+      errors[errors.length] = "You must enter a firstname.";
+    }
+
+    if (!checkEmail(email)) {
+      errors[errors.length] = "You must enter a valid email.";
+    }
+
+    if (!checkLength(username,1,100)) {
+      errors[errors.length] = "You must enter a password.";
+    }
+
+    if (!checkLength(password1,1,100)) {
+      errors[errors.length] = "You must repeat your password.";
+    }else if (compareValues(password1, password2) !== 0){
+      errors[errors.length] = "Password dont much.";
+    }
+
+    if (errors.length > 0) {
+      reportErrors(errors);
+      e.preventDefault();
+    }
+  }function reportErrors(errors) {
+    var msg = "There were some problems...\n";
+    var numError;
+    for (var i=0; i<errors.length; i++) {
+      numError = i + 1;
+      msg += "\n" + numError + ". " + errors[i];
+    }
+    alert(msg);
+  }
+
+  window.onload = function() {
+    document.getElementById("registrationform").addEventListener("submit", function(e){
+        validate(e);
+    });
+  }
+</script>
+</head>
+<body>
+<h1>Registration Form</h1>
+<form method="post" action="Process.html" id="registrationform">
+	<table border="0" cellspacing="2" cellpadding="2">
+      <tr>
+        <td>First Name:</td>
+        <td><input type="text" name="FirstName" id="FirstName" size="20"></td>
+      </tr>
+      <tr>
+        <td>Middle Initial:</td>
+        <td><input type="text" name="MidInit" id="MidInit" size="2"></td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td><input type="text" name="LastName" id="LastName" size="20"></td>
+      </tr>
+      <tr>
+        <td>City: </td>
+        <td><input type="text" name="City" id="City" size="20"></td>
+      </tr>
+      <tr>
+        <td>State: </td>
+        <td><input type="text" name="State" id="State" size="2"></td>
+      </tr>
+      <tr>
+        <td>Country:</td>
+        <td><input type="text" name="Country" id="Country" size="20"></td>
+      </tr>
+      <tr>
+        <td>Zip: </td>
+        <td><input type="text" name="Zip" id="Zip" size="10"></td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td><input type="text" name="Email" id="Email" size="30"></td>
+      </tr>
+      <tr>
+        <td>Username:</td>
+        <td><input type="text" name="Username" id="Username" size="10"></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="Password1" id="Password1" size="10"></td>
+      </tr>
+      <tr>
+        <td>Repeat Password: </td>
+        <td><input type="password" name="Password2" id="Password2" size="10"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+			<input name="submit" type="submit" value="Submit">
+			<input name="reset" type="reset" value="Reset Form">
+		</td>
+      </tr>
+    </table>
+</form>
+</body>
+</html>

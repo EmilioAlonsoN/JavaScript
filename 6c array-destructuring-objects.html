@@ -1,0 +1,31 @@
+<html>
+<head><title>6c Destructuring - objecten</title></head>
+	<body>
+		<script>
+			let sophie = { name: 'Sophie' }
+			let nina = { name: 'Nina' }
+
+			let {name: nameSophie} = sophie;
+			let {name: nameNina} = nina;
+
+			console.log(nameSophie);
+			console.log(nameNina);
+
+			let person = 
+			{	firstName: 'Albert',
+				lastName: 'Hein',
+				birthDate: 
+				{	day: 1,
+					month: 4,
+					year: 1932
+				}
+			}
+
+			//here comes your solution
+
+			console.assert(person.firstName === 'Albert');
+			console.assert(person.birthDate.day === 1);
+			console.assert(person.birthDate.year === 1932);
+	</script>
+</body>
+</html>

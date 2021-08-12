@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>querySelector()</title>
+	<link href="style.css" rel="stylesheet">
+	<script>
+		function SetColor(color) {
+			var classSelected = prompt("Choose one of the classes you will like to color.", "");
+			var colorSelected = prompt("Choose the color you will like to apply.", "")
+			document.querySelector(classSelected).style.backgroundColor = colorSelected;
+		}
+	</script>
+</head>
+
+<body>
+	<button onclick="SetColor();" type="button">Go</button>
+	<ul>
+		<li>Item 1</li>
+		<li class="a">Item 2 | class "a"</li>
+		<li>Item 3</li>
+		<li class="b">Item 4 | class "b"</li>
+		<li>Item 5</li>
+		<li class="c">Item 6 | class "c"</li>
+		<li>Item 7</li>
+		<li id="x">Item 8 | id "x"</li>
+		<li class="a">Item 9 | class "a"</li>
+		<li>Item 10</li>
+	</ul>
+</body>
+
+</html>

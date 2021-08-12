@@ -1,0 +1,22 @@
+<html>
+<head><title>7.Getters en setters</title></head>
+<body>
+	<script>
+		class Polygon 
+		{	constructor(height, width) 
+			{	this.height = height;
+				this.width = width;
+			}
+			set _length(height) 	{ this.height = height;	}
+			get _amplitude() 		{ return this.height;	}
+		}
+
+		let polygon = new Polygon(1,3);
+		console.log(polygon.height +polygon.width);
+		console.assert(polygon.height === 1);
+
+	</script>
+
+</body>
+
+</html>

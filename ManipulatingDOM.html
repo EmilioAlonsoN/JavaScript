@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	section#records {
+		float:left;
+		width:70%;
+	}
+	aside#favorites {
+		float:right;
+		width:25%;
+	}
+	.record {
+		width:40%;
+		float:left;
+		padding:2%;
+		background:#efefef;
+		margin:0 2% 20px 0;
+	}
+	.record:nth-child(2n){
+		clear:left
+	}
+	.record span.more {
+		font-style: italic;
+	}
+	.record span.details {
+		display: none;
+	}
+	.record.active span.details {
+		display: inline;
+	}
+	.record.active span.more {
+		display: none;
+	}
+	.footer {
+		clear:both;
+		font-style: italic;
+		padding-top: 30px;
+	}
+</style>
+<script>
+	window.onload = function() {
+
+		function addToFavorites(node) {
+			//add code to add title of record to "favorites"
+			var recordItem = document.createElement('p');
+			var recordItemPost = document.createTextNode(document.querySelector('#' + node.id + ' h3 span.title').innerHTML);
+			recordItem.appendChild(recordItemPost);
+			document.getElementById('favorites').appendChild(recordItem);
+		}
+
+		var detailElements = document.getElementsByClassName('record');
+		for (var i=0; i < detailElements.length; i++) {
+			detailElements[i].addEventListener('click', function(e) {
+				//check to see if click was from '.addtofavorites' link
+				//  if so, call function addToFavorites
+				//else, toggle display of details of record and toggle +/-
+				if (e.target.className == 'addtofavorites') {
+					addToFavorites(e.target.parentNode.parentNode);
+					e.target.parentNode.removeChild(e.target);
+				} else {
+					if (e.currentTarget.className == 'record') {
+						e.currentTarget.className = 'record active';
+					} else {
+						e.currentTarget.className = 'record';
+					}
+					let myToggle = document.querySelector('#' + e.currentTarget.id + ' h3 span.toggle');
+					let myToggleContents = myToggle.innerHTML;
+					if (myToggleContents == '+') {
+						myToggle.innerHTML = '-';
+					} else {
+						myToggle.innerHTML = '+';
+					}
+				}
+			});
+		}
+	};
+</script>
+<title>Manipulating the DOM</title>
+</head>
+
+<body>
+<section id="records">
+	<h1>Selected Beatles Records</h1>
+	<div class="record" id="harddaysnight">
+		<h3><span class="title">A Hard Day's Night</span> <span class="toggle">+</span></h3>
+		<p>A Hard Day's Night is the third studio album by the English rock band the Beatles, released on 10 July 1964, with side one containing songs from the soundtrack to their film A Hard Day's Night.<span class="more"> More...</span><span class="details"> The American version of the album was released two weeks earlier, on 26 June 1964 by United Artists Records, with a different track listing. In contrast to their first two albums, all 13 tracks on A Hard Day's Night were written by John Lennon and Paul McCartney showcasing the development of their songwriting talents. The album includes the title track, with its distinct opening chord,[4] and the previously released "Can't Buy Me Love", both transatlantic number-one singles for the band.</span></p>
+		<p><a href="#" class="addtofavorites">Add To Favorites</a></p>
+	</div>
+	<div class="record" id="rubbersoul">
+		<h3><span class="title">Rubber Soul</span> <span class="toggle">+</span></h3>
+		<p>Rubber Soul is an album by the Beatles, their sixth UK album, and the tenth released in America.<span class="more"> More...</span><span class="details"> Released on 3 December 1965, it met with a highly favourable critical response and topped record charts in the United Kingdom for several weeks, as well as in the United States, where it was issued with a different selection of tracks.</span></p>
+		<p><a href="#" class="addtofavorites">Add To Favorites</a></p>
+	</div>
+	<div class="record" id="abbeyroad">
+		<h3><span class="title">Abbey Road</span> <span class="toggle">+</span></h3>
+		<p>Abbey Road is the eleventh studio album by English rock band the Beatles, released on 26 September 1969 by Apple Records.<span class="more"> More...</span><span class="details"> The recording sessions for the album were the last in which all four Beatles participated. Although Let It Be was the final album that the Beatles completed before the band's dissolution in April 1970, most of the album had been recorded before the Abbey Road sessions began.[1] A double A-side single from the album, "Something"/"Come Together", released in October, topped the Billboard chart in the US.</span></p>
+		<p><a href="#" class="addtofavorites">Add To Favorites</a></p>
+	</div>
+	<div class="record" id="letitbe">
+		<h3><span class="title">Let It Be</span> <span class="toggle">+</span></h3>
+		<p>Let It Be is the twelfth and final studio album by the English rock band the Beatles.<span class="more"> More...</span><span class="details"> It was released on 8 May 1970, almost a month after the group's break-up. Like most of the band's previous releases, it was a number one album in many countries, including both the US and the UK, and was released in tandem with the motion picture of the same name.</span></p>
+		<p><a href="#" class="addtofavorites">Add To Favorites</a></p>
+	</div>
+</section>
+<aside id="favorites">
+	<h2>My Favorites</h2>
+</aside>
+<p class="footer">Content taken from <a href="https://en.wikipedia.org/wiki/A_Hard_Day%27s_Night_(album)">Wikipedia</a></p>
+</body>
+</html>
