@@ -1,0 +1,33 @@
+<html>
+<head><title>05.Rest parameters</title></head>
+<body>
+	<script>
+		// write a function that accepts a callback and a random number of numeric arguments
+        // the callback function must return false for all arguments that fail
+        // return an array with all elements that DO pass
+		function myArgumentFilter(form, ...numbers) {		// your code here	}
+			let result = [];
+			numbers.forEach(function(eachNumber, index) {
+				if (eachNumber > 5) {
+					result.push(eachNumber)
+				} else {
+					console.log(eachNumber + "false");
+				}
+			});
+			console.log(result);
+			return result;
+		};
+		// checks
+		var result = myArgumentFilter((x) => x > 5, 7,2,6,4,9,12,4);
+
+		console.assert(result.length === 4, 'The new array has 4 elements');
+		console.assert(result[0] === 7, 'element 0 === 7');
+		console.assert(result[1] === 6, 'element 0 === 6');
+		console.assert(result[2] === 9, 'element 0 === 9');
+		console.assert(result[3] === 12, 'element 0 === 12');
+	
+
+	</script>
+</body>
+
+</html>

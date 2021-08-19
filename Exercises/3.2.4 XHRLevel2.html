@@ -1,0 +1,64 @@
+<!-- XHRLevel2.html -->
+
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<meta charset=utf-8>
+	<title>Cross-Domain XHR</title>
+	<style>
+		#content {
+			margin-left: 15px;
+			margin-top: 15px;
+			font-family: arial, helvetica, sans-serif;
+			background-color: darkgrey;
+			width: 600px;
+			padding: 10px;
+			border: thin black solid;
+			-moz-border-radius: 8px;
+			border-radius: 8px;
+		}
+		span { color: white; }
+	</style>
+</head>
+<body>
+	<div id="content">
+		<br>To:<span id="to"></span>
+		<br>From:<span id="from"></span>
+		<br>Message:<span id="msg"></span>
+	</div>
+	<script>
+	function loadIt() {
+		// Insert try-catch statement here
+		try {
+			let xhr = new XMLHttpRequest;
+			let to = document.getElementById('to');
+			let from = document.getElementById('from');
+			let msg = document.getElementById('msg');
+			
+			xhr.onerror = function(e) {
+				alert('XHR onerror occured: ' + e);
+			}
+			xhr.open("GET", 'http://www.example2.remote:8080/file.xml', false);
+			xhr.send(null);
+
+			xmlObj = xhr.response;
+			output();
+		}
+		catch(err) {
+			alert('Try failed. Error occurred: ' + err);
+		}
+		function output() {
+			to.innerHTML = xmlObj.getElementsByTagName('to')[0].
+				childNodes[0].nodeValue;
+			from.innerHTML = xmlObj.getElementsByTagName('from')[0].
+				childNodes[0].nodeValue;
+			msg.innerHTML = xmlObj.getElementsByTagName('body')[0].
+				childNodes[0].nodeValue;
+		}
+	}
+	
+	// Add onload event listener here
+	window.addEventListener('load', loadIt, true);
+	</script>
+</body>
+</html>

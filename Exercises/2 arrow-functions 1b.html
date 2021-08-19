@@ -1,0 +1,12 @@
+<html>
+	<head><title>02.Arrow functions</title></head>
+	<body>
+		<script >
+            var makeCar = () => ({type: 'Skoda', color: 'Silver'});	// wrong:
+            var niceCar = makeCar();
+			console.assert(niceCar.type === 'Skoda', 'niceCar must have a property \'type\' with value \'Skoda\'');
+		</script>
+
+	</body>
+
+</html>

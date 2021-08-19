@@ -1,0 +1,19 @@
+<html><head><title>02.Arrow functions</title></head>
+<body>
+<script>
+    var myFunc = function (num) 
+     {  this.exponent = num;
+        this.doSomeMath = function (num) 
+        {   var exp = (num) => Math.pow(num, this.exponent)  // fout
+            return exp(exp(num)) + this.exponent;
+        }
+    };
+	
+	var newFunc = new myFunc(5);
+	
+    console.log(newFunc.doSomeMath(2));
+	
+    console.assert(newFunc.doSomeMath(2) === 1953128, 'Result: 1953128')
+</script>
+</body>
+</html>

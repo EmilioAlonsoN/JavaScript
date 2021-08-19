@@ -1,0 +1,25 @@
+<html>
+<head><title>04 Iterators opdr1</title></head>
+<body>
+<script>
+    var myMap = new Map();
+    myMap.set('key1', 'value1');
+    myMap.set('key2', 'value2');
+    myMap.set('value1', 'key1');
+
+    // create a function which reverses all key/value pairs from map myMap
+    function reverseAllKeys(key, value) {
+        myMap.forEach((key, value) => {console.log(key + value);});
+    }
+    reverseAllKeys();
+    // checks
+    console.assert(myMap.size === 3, 'We got 3 elements');
+    console.assert(myMap.get('value1') === 'key1', 'value1/key1 is present');
+    console.assert(myMap.get('value2') === 'key2', 'value2/key2 is present');
+    console.assert(myMap.get('key1') === 'value1', 'key1/value1 is present');
+
+</script>
+
+</body>
+
+</html>

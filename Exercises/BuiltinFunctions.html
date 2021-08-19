@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Built-in Functions</title>
+	<link href="style.css" rel="stylesheet">
+	<script>
+		var userNum1, userNum2;
+		userNum1 = window.prompt("Choose a number.", "");
+		alert("You chose " + userNum1);
+		userNum2 = window.prompt("Choose another number.", "");
+		alert("You chose " + userNum2);
+		var number1 = Number(userNum1);
+		var number2 = Number(userNum2);
+		let numsAdded = number1 + number2;
+	</script>
+</head>
+
+<body>
+	<p>
+		<script>
+			document.write(userNum1 + " + " + userNum2 + " = ");
+			document.write(numsAdded + "<br/>");
+		</script>
+	</p>
+</body>
+
+</html>

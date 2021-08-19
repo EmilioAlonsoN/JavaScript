@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Conditionals</title>
+<script>
+/*
+Write the greetUser() function that prompts the user
+for his/her gender and last name and stores the results
+in variables.
+*/
+function greetUser(){
+
+	let getGender;
+	let getSurname;
+	let gender = ["female", "male", "agender", "transgender female", "neither", "transgender male"];
+	
+	/*
+	For gender:
+	If the user enters a gender other than "Male" or "Female",
+	prompt him/her to try again.
+	*/
+	getGender = prompt("Choose yout Gender.", "") || "";
+	if(getGender == ""){
+		alert("Try again with a valid input", "") || "";
+		getGender = prompt("Choose yout Gender.", "") || "";
+	}
+	if(gender.indexOf(getGender.toLowerCase()) == -1) {
+		alert("Your gender is not on our databasebut will be store", "") || "";
+	}
+
+	/*
+	For last name:
+	If the user leaves the last name blank, prompt him/her to
+	try again.
+	If the user enters a number for the last name, tell the user
+	that a last name can't be a number and prompt him/her to try again.
+	*/
+	getSurname = prompt("What is your surname?", "");
+	if(getSurname == "") {
+		getSurname = prompt("Try again with a valid input", "") || "";
+	}else if(! isNaN(getSurname)) {
+		getSurname = prompt("Surname cant contain numbers try again", "") || "";
+	}else if(getSurname[0] === getSurname[0].toLowerCase()){
+		getSurname = prompt("Try again with a first letter as a capital letter", "") || "";
+	}
+
+	/*	
+	After collecting the gender and last name...
+	If the gender is valid, pop up an alert that
+	greets the user appropriately (e.g, "Hello Ms. Smith!")
+	If the gender is not valid, pop up an alert
+	that reads something like "XYZ is not a gender!"
+
+	*/
+	switch(getGender.toLowerCase()) {
+		case "male" : case "transgender male" :
+		alert("Hello Mr. " + getSurname);
+		break;
+		case "female" : case "transgender female" :
+		alert("Hello Ms. " + getSurname);
+		break;
+		case "agender" : case "neither" :
+		alert("Hello " + getSurname);
+		break;
+		default :
+		alert("Hello " + getSurname);
+
+	}
+}
+
+</script>
+</head>
+<body onload="greetUser();">
+	<p>Nothing to show here.</p>
+</body>
+</html>

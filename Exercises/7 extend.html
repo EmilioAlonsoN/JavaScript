@@ -1,0 +1,61 @@
+<html>
+<head><title>07.Extend</title></head>
+<body>
+	<script>
+		class Vehicle 
+		{	constructor(model, type, constructionYear, noOfWheels) 
+			{	this._model = model;
+				this._type = type;
+				this._constructionYear = constructionYear;
+				this._noOfWheels = noOfWheels;
+			}
+			get constructionYear() 	{ return this._constructionYear; }
+			get noOfWheels()	{ return this._noOfWheels; }
+		}
+
+		class Car extends Vehicle 
+		{	constructor(model, type, constructionYear, noOfWheels)	
+			{	super(model, type, constructionYear, noOfWheels);
+				this._oldTimerAge = 30; 
+			}
+			
+			// implement isOldTimer
+			isOldTimer() { return this.currentYear - this.constructionYear > this._oldTimerAge; }
+			get currentYear() { 
+				return new Date().getFullYear();
+				
+			}
+			
+
+			static convertToMotor(car) { return new Motor (car.model, car.type, car.constructionYear, 2); }
+		}
+		// add Motor class here
+
+		class Motor extends Vehicle {
+				isSidecar() {return this.noOfWheels === 3;}
+		}
+
+
+		let car = new Car('Ford', 'Focus', 1995, 4);
+		console.assert(car.isOldTimer() === false);
+		console.log(car);
+		console.log("Current date is: " + car.currentYear);
+
+		let motor = new Motor('Ducati', 'Monster', 2013, 2);
+		console.assert(motor.isSidecar() === false);
+		console.log(motor);
+
+		let sidecar = new Motor('One', 'Sidecar', 2013, 3);
+		console.assert(sidecar.isSidecar() === true);
+		console.log(sidecar);
+
+		let convertedCar = Car.convertToMotor(car);
+		console.assert(convertedCar.noOfWheels === 2);
+		console.log(convertedCar);
+
+
+	</script>
+
+</body>
+
+</html>
